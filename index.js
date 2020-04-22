@@ -39,9 +39,26 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
+
+Person.prototype.eat = function(edibles){
+  if(this.stomach.length < 10){
+    this.stomach.push(edibles);
+  }
+}
+
+Person.prototype.poop = function(){
+  this.stomach = [];
+}
+
+Person.prototype.toString = function() {
+  return `${this.name}, ${this.age}`;
+}
+
 
 /*
   TASK 2
@@ -57,29 +74,69 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
 
+// create car constructor function for Car - takes 2 properties model and milesPerGallon
+
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
 
+//create .fill function that add gallons to tank
+
+Car.prototype.fill = function(gallons){
+  this.tank = gallons + this.tank;
+}
+
+carType = new Car ({
+  model: 'Honda',
+  milesPerGallon: 5,
+})
+
+console.log(carType.tank);
+
+carType.fill(60);
+
+//create .drive - the distance should make the odometer go up and tank to decrease - milesPerGallon
+
+// Car.prototype.drive = function(distance){
+//   if()
+// }
+
+
+ 
+//
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
     - Besides `name` and `age`, Baby takes a third argument to initialize `favoriteToy`.
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
-*/
-function Baby() {
-
+// */
+function Baby(name, age, favoriteToy) {
+  Person.call(this,name, age);
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = favoriteToy;
 }
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}`;
+}
+
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. window binding - default to the window the global object
+  2. Implicit binding -
+  3. Explicit binding -
+  4. new binding - 
 */
 
 
