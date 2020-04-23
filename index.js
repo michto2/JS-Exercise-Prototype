@@ -84,7 +84,6 @@ function Car(model, milesPerGallon) {
   this.odometer = 0;
 }
 
-//create .fill function that add gallons to tank
 
 Car.prototype.fill = function(gallons){
   this.tank = gallons + this.tank;
@@ -133,10 +132,10 @@ Baby.prototype.play = function(){
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. window binding - default to the window the global object
-  2. Implicit binding -
-  3. Explicit binding -
-  4. new binding - 
+  1. Window binding - default to the window the global object - the value of 'this' will be the window object.
+  2. Implicit binding(implied) - when you call a function, look to the left of the dot and that is what 'this' refers to. This only applies to object with methods.
+  3. Explicit binding - explictly tell Javascript what 'this' keyword should refer to. There are three ways: call, apply and bind.
+  4. new binding - When a constructor function is used the 'this' refers to the specific object that is created and returned by the constructor function.
 */
 
 
